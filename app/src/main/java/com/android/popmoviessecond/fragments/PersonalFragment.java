@@ -2,7 +2,9 @@ package com.android.popmoviessecond.fragments;
 
 import android.app.Fragment;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +15,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.popmoviessecond.R;
-//import com.android.popmoviessecond.fragments.adapters.FavoritesAdapter;
+import com.android.popmoviessecond.fragments.adapters.FavoritesAdapter;
+import com.android.popmoviessecond.sqllite.FavoriteResult;
+import com.android.popmoviessecond.sqllite.FavoritesProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,9 +31,9 @@ public class PersonalFragment extends Fragment {
     public static int index = -1;
     public static int top = -1;
     LinearLayoutManager mLayoutManager;
-//    private MovieDBHelper helper;
+    //    private MovieDBHelper helper;
     private Cursor mCursor;
-//    FavoritesAdapter mAdapter;
+    FavoritesAdapter mAdapter;
     int mCurCheckPosition;
     public static PersonalFragment newInstance() {
 
@@ -50,13 +57,13 @@ public class PersonalFragment extends Fragment {
         return v;
     }
 
-//    @Override
-//    public void onPause() {
-//        super.onPause();
+    @Override
+    public void onPause() {
+        super.onPause();
 //        index = mLayoutManager.findFirstVisibleItemPosition();
 //        View v = recyclerView.getChildAt(0);
 //        top = (v == null) ? 0 : (v.getTop() - recyclerView.getPaddingTop());
-//    }
+    }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -65,10 +72,10 @@ public class PersonalFragment extends Fragment {
             mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
         }
     }
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        refreshData();
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshData();
 //        if(index != -1)
 //        {
 //            mLayoutManager.scrollToPositionWithOffset( index, top);
@@ -91,8 +98,8 @@ public class PersonalFragment extends Fragment {
 //                    recyclerView.setAdapter(favAdapter);
 //                });
 //            });
-//    }
-//    public List<MoviesContract.FavMovieSQLEntry> getAllNotes() {
+    }
+    //    public List<MoviesContract.FavMovieSQLEntry> getAllNotes() {
 //        List<MoviesContract.FavMovieSQLEntry> notes = new ArrayList<>();
 //
 //        // Select All Query
@@ -119,25 +126,24 @@ public class PersonalFragment extends Fragment {
 //        // return notes list
 //        return notes;
 //    }
-//private void retrieveFavData() {
-//    Uri movies = FavoritesProvider.PROVIDER_URI;
-//    if (mCursor != null) {
-//        mCursor.close();
-//    }
-//    mCursor = getActivity().getContentResolver().query(movies, null, null, null, null);
-//    if (mCursor != null && mCursor.getCount() > 0) {
-//        mCursor.moveToFirst();
-//        FavoriteResult.buildResult(mCursor);
-//    } else {
-//        Toast.makeText(getActivity()," No favorites yet",Toast.LENGTH_LONG ).show();
-//    }
-//}
-//
-//    public void refreshData() {
-//        retrieveFavData();
-//        mAdapter = new FavoritesAdapter(mCursor,getActivity());
-//        recyclerView.setAdapter(mAdapter);
-//    }
-}
+    private void retrieveFavData() {
+        Uri movies = FavoritesProvider.PROVIDER_URI;
+        if (mCursor != null) {
+            mCursor.close();
+        }
+        mCursor = getActivity().getContentResolver().query(movies, null, null, null, null);
+        if (mCursor != null && mCursor.getCount() > 0) {
+            mCursor.moveToFirst();
+            FavoriteResult.buildResult(mCursor);
+        } else {
+            Toast.makeText(getActivity()," No favorites yet",Toast.LENGTH_LONG ).show();
+        }
+    }
 
+    public void refreshData() {
+        retrieveFavData();
+        mAdapter = new FavoritesAdapter(mCursor,getActivity());
+        recyclerView.setAdapter(mAdapter);
+    }
+}
 

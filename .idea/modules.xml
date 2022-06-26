@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/udacity-popular-movies-app-master.iml" filepath="$PROJECT_DIR$/.idea/modules/udacity-popular-movies-app-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/udacity-popular-movies-app-master.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/udacity-popular-movies-app-master.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/udacity-popular-movies-app-master.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/udacity-popular-movies-app-master.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/udacity-popular-movies-app-master.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/udacity-popular-movies-app-master.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/udacity-popular-movies-app-master.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/udacity-popular-movies-app-master.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/App-Movies.iml" filepath="$PROJECT_DIR$/.idea/modules/App-Movies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App-Movies.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App-Movies.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App-Movies.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App-Movies.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App-Movies.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App-Movies.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App-Movies.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App-Movies.app.unitTest.iml" />
     </modules>
   </component>
 </project>
